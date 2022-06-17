@@ -1,0 +1,23 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+.dialogsItem {
+  padding: 10px;
+  
+}
+.item a{
+  text-decoration: none;
+  color :white;
+}
+.item a:hover{
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+}
+.massages {
+  padding: 10px;
+}
+.massages .massage{
+  color :white;
+}
