@@ -3,31 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './script/script.js'
-
-const postData=[
-  {id:1, massage: "hi",likesCount: 15},
-  {id:2, massage: "how are you?", likesCount: 5}
-];
-const dialogData =[
-  {id:1, name: 'dimich'},
-  {id:2, name: 'sveta'},
-  {id:3, name: 'valera'},
-  {id:4, name: 'nasty'},
-  {id:5, name: 'sasha'}
-]
-const messageData=[
-{id:1, massage: 'Hi'},
-{id:2, massage: "how are you?"},
-{id:3, massage: "im fine"},
-{id:4, massage: 'Hi'},
-{id:5, massage: 'Hi'}
-];
+import state from './script/script.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App posts={postData} massage={messageData} user={dialogData}/>
+    <App state={state}/>
   </React.StrictMode>
 );
 
