@@ -10,7 +10,7 @@ import Setting from "./components/Setting/Setting";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 /* material UI */
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="wrap">
@@ -18,8 +18,8 @@ const App = () => {
         <Nav />
         <div className="app-wrapper-content">
           <Routes>
-          <Route path="/profile" element={<Profile/>} />
-          <Route  path="/dialog" element={<Dialog/>} />
+          <Route path="/profile" element={<Profile posts={props.posts}/>} />
+          <Route  path="/dialog" element={<Dialog massage={props.massage} user={props.user}/>} />
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />
           <Route path="/setting" element={<Setting/>} />

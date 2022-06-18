@@ -1,12 +1,9 @@
 import c from "./MyPost.module.css";
 import Post from "./Post/Post";
 
-const MyPost = () => {
+const MyPost = (props) => {
 
-  let postData=[
-    {id:1, massage: "hi",likesCount: 15},
-    {id:2, massage: "how are you?", likesCount: 5}
-  ];
+  
 
   return (
     <div className={c.postBlock}>
@@ -18,7 +15,7 @@ const MyPost = () => {
         <button>Add Post</button>
       </div>
       <div className={c.posts}>
-        {postData.map(p => <Post message={p.massage}like={p.likesCount}/>)}
+        {props.posts.map(p => <Post message={p.massage}like={p.likesCount}/>)}
       </div>
     </div>
   );
