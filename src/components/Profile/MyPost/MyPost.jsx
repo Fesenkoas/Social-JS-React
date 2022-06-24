@@ -1,8 +1,13 @@
+import React from "react";
 import c from "./MyPost.module.css";
 import Post from "./Post/Post";
 
 const MyPost = (props) => {
-
+const getPost = React.createRef();
+  const addPost = () => {
+    props.setPost(getPost.current.value);
+    getPost.current.value='';
+  } 
   
 
   return (
@@ -10,9 +15,9 @@ const MyPost = (props) => {
       <h3>My post</h3>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea ref = {getPost}></textarea>
         </div>
-        <button>Add Post</button>
+        <button onClick={addPost}>Add Post</button>
       </div>
       <div className={c.posts}>
         {props.posts.map(p => <Post message={p.massage}like={p.likesCount}/>)}

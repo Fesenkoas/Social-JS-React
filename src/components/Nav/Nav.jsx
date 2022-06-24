@@ -4,7 +4,7 @@
 const Nav = () =>{
   return( 
   <nav className={s.nav}>
-    <div className={s.item}>
+        <div className={s.item}>
           <Link to ="/profile">Profile</Link>
         </div>
         <div className={`${s.item}`}>

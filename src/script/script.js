@@ -1,4 +1,4 @@
-
+import { renderTree } from "../render.js";
   const state = {
     profilePage:{
     postData:[
@@ -23,6 +23,17 @@ dialogPage:{
       ] 
     }
   }
+
+  export const setPost = (postMessage) => {
+    const newPost = {
+      id:5,
+      massage:postMessage,
+      like: 0
+    };
+    state.profilePage.postData.push(newPost);
+    renderTree(state);
+  }
+ 
 
   export default  state;
   

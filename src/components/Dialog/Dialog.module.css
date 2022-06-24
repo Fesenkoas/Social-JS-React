@@ -8,7 +8,7 @@
 }
 .item a{
   text-decoration: none;
-  color :white;
+  color :black;
 }
 .item a:hover{
   color: red;
@@ -19,5 +19,5 @@
   padding: 10px;
 }
 .massages .massage{
-  color :white;
+  color :black;
 }
