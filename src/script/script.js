@@ -1,10 +1,13 @@
-import { renderTree } from "../render.js";
+let renderTree = (state) =>{
+  console.log("State");
+}
   const state = {
     profilePage:{
     postData:[
       {id:1, massage: "hi",likesCount: 15},
       {id:2, massage: "how are you?", likesCount: 5}
-    ]
+    ],
+    newPostText: 'Wats up!'
   },
 dialogPage:{
     dialogData:[
@@ -24,16 +27,22 @@ dialogPage:{
     }
   }
 
-  export const setPost = (postMessage) => {
+  export const setPost = () => {
     const newPost = {
       id:5,
-      massage:postMessage,
+      massage: state.profilePage.newPostText,
       like: 0
     };
     state.profilePage.postData.push(newPost);
+    state.profilePage.newPostText = '';
     renderTree(state);
   }
- 
-
+ export const updateNewPost = (newText) =>{
+  state.profilePage.newPostText = newText;
+  renderTree(state);
+ }
+export const subscribe = (observer) =>{
+  renderTree = observer;
+}
   export default  state;
   
