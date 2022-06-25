@@ -17,7 +17,12 @@
 }
 .massages {
   padding: 10px;
+  
 }
 .massages .massage{
   color :black;
 }
+/* .dialogSpan{
+  border: solid 2px;
+  background-color: white;
+} */
