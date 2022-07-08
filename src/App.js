@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
-import Dialog from "./components/Dialog/Dialog";
+import DialogContainer from "./components/Dialog/DialogContainer";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
@@ -18,9 +18,9 @@ const App = (props) => {
         <Nav />
         <div className="app-wrapper-content">
           <Routes>
-          <Route path="/profile" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
+          <Route path="/profile" element={<Profile/>} />
 
-          <Route  path="/dialog" element={<Dialog  store={props.store} />} />
+          <Route  path="/dialog" element={<DialogContainer/>} />
 
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />

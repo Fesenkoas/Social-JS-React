@@ -1,7 +1,6 @@
 import React from "react";
 import c from "./MyPost.module.css";
 import Post from "./Post/Post";
-import {updatePostAction, addPostAction} from "../../../script/profile_reduser"
 
 
 
@@ -9,11 +8,14 @@ import {updatePostAction, addPostAction} from "../../../script/profile_reduser"
 const MyPost = (props) => {
   const getPost = React.createRef();
 
-  const postElements = props.posts.map(p => 
-    <Post message={p.massage} like={p.likesCount} />);
+  const postElements = props.posts.map((p,key) => <Post message={p.massage} like={p.likesCount} />);
 
-  const addPost = () => {props.dispatch(addPostAction())};
-  const onPostChange = () => {props.dispatch(updatePostAction(getPost.current.value))};
+  const onAddPost = () => {
+    props.addPost();
+  };
+  const onPostChange = () => {
+    props.updatePostAction(getPost.current.value);
+  };
 
   return (
     <div className={c.postBlock}>
@@ -27,7 +29,7 @@ const MyPost = (props) => {
             placeholder="Enter our Message"
           />
         </div>
-        <button onClick={addPost}>Add Post</button>
+        <button onClick={onAddPost}>Add Post</button>
       </div>
       <div className={c.posts}>
         {postElements}
