@@ -8,6 +8,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserContainer from "./components/User/UserContainer";
 
 /* material UI */
 const App = (props) => {
@@ -19,14 +20,12 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <Routes>
           <Route path="/profile" element={<Profile/>} />
-
           <Route  path="/dialog" element={<DialogContainer/>} />
-
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />
           <Route path="/setting" element={<Setting/>} />
+          <Route path="/User" element={<UserContainer />} />
           </Routes>
-          {/* <Profile/> */}
         </div>
       </div>
     </BrowserRouter>

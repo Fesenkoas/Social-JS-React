@@ -19,6 +19,9 @@ const Nav = () =>{
         <div className={s.item}>
           <Link to="/Setting">Settings</Link>
         </div>
+      <div className={s.item}>
+          <Link to="/User">User</Link>
+      </div>
       </nav>
       
   );
