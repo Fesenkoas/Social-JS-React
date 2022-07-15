@@ -1,54 +1,56 @@
+import React from "react"
+import axios from "axios";
 import s from "./user.module.css";
-const User = (props) => {
-    if(props.users.length === 0){
-  props.setUsers([
-    {
-      id: 1,
-      photoUrl: "https://openclipart.org/image/800px/177394",
-      fullName: "hi",
-      followed: false,
-      status: "Im a boss",
-      location: { city: "Minsk", contry: "israel" },
-    },
-    {
-      id: 2,
-      photoUrl: "https://openclipart.org/image/800px/177394",
-      fullName: "a",
-      followed: false,
-      status: "Itrhrth",
-      location: { city: "g", contry: "fghg" },
-    },
-    {
-      id: 3,
-      photoUrl: "https://openclipart.org/image/800px/177394",
-      fullName: "b",
-      followed: true,
-      status: "124",
-      location: { city: "erge", contry: "dfgdgdg" },
-    },
-    {
-      id: 4,
-      photoUrl: "https://openclipart.org/image/800px/177394",
-      fullName: "c",
-      followed: true,
-      status: "k,,iiy",
-      location: { city: "ertet", contry: "dfgddfg" },
-    }
-]);
+
+class User extends React.Component {
+  // constructor(props){
+  //   super(props);
+    
+  // }
+
+componentDidMount (){
+  axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+  .then(response =>{
+    this.props.setUsers(response.data.items);
+    this.props.setTotalUsersCount(response.data.totalCount)
+   } );
 }
+
+onPagechange =(pageNumber) =>{
+  this.props.setCurrentPage(pageNumber)
+  axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+  .then(response =>{this.props.setUsers(response.data.items) } );
+}
+
+render(){
+  const pagesCount =Math.ceil(this.props.totalUsersCount/this.props.pageSize);
+  const pages = [];
+
+  for(let i=1; i<=pagesCount;i++)pages.push(i);
+
+  let curP = this.props.currentPage;
+  let curPF = ((curP - 5) < 0) ?  0  : curP - 5 ;
+  let curPL = curP + 5;
+  let slicedPages = pages.slice( curPF, curPL);
   return (
     <div>
-      {props.users.map((u) => (
+      <div>
+        {slicedPages.map(p => {
+          return <span className={this.props.currentPage === p ? s.selectPage: ''} 
+          onClick={(e) => this.onPagechange(p)}> {p} </span>
+        })}
+      </div>
+      {this.props.users.map((u) => (
         <div key={u.id}>
           <span>
             <div className={s.item}>
-              <img src={u.photoUrl} alt="#" />
+              <img src={u.photos.small!= null? u.photos.small : "https://openclipart.org/image/800px/177394"} alt="#" />
             </div>
             <div>
               {u.followed ? (
                 <button
                   onClick={() => {
-                    props.unfollow(u.id);
+                    this.props.unfollow(u.id);
                   }}
                 >
                   Unfollow
@@ -56,7 +58,7 @@ const User = (props) => {
               ) : (
                 <button
                   onClick={() => {
-                    props.follow(u.id);
+                    this.props.follow(u.id);
                   }}
                 >
                   Follow
@@ -66,18 +68,19 @@ const User = (props) => {
           </span>
           <span>
             <span>
-              <div>{u.fullName}</div>
+              <div>{u.name}</div>
               <div>{u.status}</div>
             </span>
             <span>
-              <div>{u.location.contry}</div>
-              <div>{u.location.city}</div>
+              <div>{'u.location.contry'}</div>
+              <div>{'u.location.city'}</div>
             </span>
           </span>
         </div>
       ))}
     </div>
   );
-};
+}
+}
 
-export default User;
+export default User
