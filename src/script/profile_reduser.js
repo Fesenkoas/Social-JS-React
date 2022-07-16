@@ -1,9 +1,11 @@
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const initState = {
     postData:[
         {id:1, massage: "hi",likesCount: 15},
         {id:2, massage: "how are you?", likesCount: 5}
       ],
-      newPostText: ''
+      newPostText: '',
+      profile:null
 }
 
 export const profileReducer = (state = initState,action) =>{
@@ -21,12 +23,14 @@ export const profileReducer = (state = initState,action) =>{
             ...state,
             newPostText: action.newText
         };
-        
+        case SET_USER_PROFILE:
+            return {...state, profile:action.profile}
     default:
         return state;
    } 
 }
 export const addPostAction = () => ({type:'ADD-POST'});
 export const updatePostAction = (text) => ({type:'UPDATE-NEW-POST-TEXT', newText: text });
+export const setUserProfile = (profile) => ({type:'SET_USER_PROFILE',profile });
 
 export default profileReducer;

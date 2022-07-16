@@ -2,7 +2,7 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
-import Profile from "./components/Profile/Profile";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import DialogContainer from "./components/Dialog/DialogContainer";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
@@ -19,7 +19,7 @@ const App = (props) => {
         <Nav />
         <div className="app-wrapper-content">
           <Routes>
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile/:userId" element={<ProfileContainer/>} />
           <Route  path="/dialog" element={<DialogContainer/>} />
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />

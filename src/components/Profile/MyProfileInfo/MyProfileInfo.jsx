@@ -1,4 +1,4 @@
-import c from "./ProfileInfo.module.css";
+import c from "./MyProfileInfo.module.css";
 
 import Preloader from "../../common/Preloader/Preloader";
 
