@@ -29,7 +29,8 @@ class UserContainer extends React.Component {
   
   render(){
     
-    return <>
+    return (
+    <>
     
     {this.props.isFetching ? <Preloader/>:
     <User 
@@ -43,6 +44,7 @@ class UserContainer extends React.Component {
     />
       }
      </>
+     );
   }
   }
 
