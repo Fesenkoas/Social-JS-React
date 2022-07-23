@@ -19,7 +19,7 @@ const MyProfileInfo = ({ profile }) => {
             <h1>{profile.fullName}</h1>
           </div>
           <div className={c.item}>
-            <img src={profile.photos.large} alt="#" />
+          <img src={profile.photos.large!= null? profile.photos.large: "https://openclipart.org/image/800px/177394"} alt="#" />
           </div>
           <div>
             {profile.aboutMe}
